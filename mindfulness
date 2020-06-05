@@ -1,0 +1,305 @@
+#########################################################
+#User Game Intro and DocString
+#########################################################
+
+"""
+DocString: 
+
+1. Intro:
+
+The Mind-fullness Game is a simple quiz game to help you taking your midn off 
+giving yourself a break in the day and learning some facts about Mindfullness.
+
+The game consists of three stages that provide information on how to be more 
+minduful, with defined functions for start, win and repeat. 
+
+This game requires no pre-knowledge of mindfulness, just educated guesses and 
+following instructions.
+
+Round 1. A mindfulness quiz
+Round 2. "Learn how to breathe right"- Madlib
+Round 3. How to write your 'Gratefulness'-Journal
+
+2. Known Bugs and Errors:
+- while loop in Round 1 for first statement does not show print when answering wrong - tbf 
+"""
+
+from sys import exit
+import random
+
+
+
+def start():
+    #defining gamer variables to address them in the strings 
+
+    
+   #gamer intro   
+    print("""
+ _______________________________________________________________________________________
+    
+    Feeling like your mind is full, you need a break, you can't focus?
+
+    The Mind-fullness Game is a simple game to take your mind off, 
+    it consists of three rounds that teach you more about how to be 'Mindful'. 
+    
+    This game requires no pre-knowledge, just educated guesses.
+
+    You may be new to the concept of mindfulness, and why we should aspire it?!  
+    most people may have different reasons aiming to become more mindful
+    and how to achieve a less 'mind-full' state. 
+
+
+    But why don't you try it for yourself and learn more in just a few minutes!
+
+
+    Shall we?
+_______________________________________________________________________________________
+    
+    """)
+    
+    input('<Press any key to continue>\n')
+    pre_input()
+    
+#########################################################
+#User Pre-Game-Intro 
+#########################################################
+
+def pre_input():
+    print ("""
+    
+                    ***** Great, let's start with a Quiz! ***** 
+
+        But before we start, please create a ** game name ** and tell us 
+        ** how you feel today ** in the spaces below, hit enter after each.""")
+
+    user_name = input('\t Game name: ')
+    
+    user_mood_start = input('\t Starting mood: ')
+
+
+    
+#########################################################
+#Game Round 1 - Mindfulness Quiz 
+#########################################################
+    print (f"""
+    
+_______________________________________________________________________________________
+    
+    \n\t\t  Welcome to the first round {user_name}!\t
+            I'm sure once you get through the Mind-fullness Game, 
+            \t you will feel much better than just: '{user_mood_start}'  
+            """)
+    round_1()
+
+def round_1():
+    chances = 2
+    print("""
+    
+    The 'Mind-fullness'-Quiz is a first warm-up round to test your knowledge.
+            You have two tries to answer right and continue.
+    
+ _______________________________________________________________________________________
+    
+    """)
+
+    input('<press any key to start>\n')
+  
+  
+    #Game Round 1 Question and Answer Options 
+    print("""
+
+Which three activties together will improve your mindfulness, enter the number for the correct answers:
+
+
+1) sleeping 7.5 hrs, eating a burger and fries, watching netflix
+2) bottomless brunch, meditating, black friday sales shopping
+3) sleeping 7.5 or 9 hrs, breathing, meditating 
+
+    """)
+    
+
+    input('<Press any key to continue>\n')
+   
+    while chances>0:
+        print("""
+        
+        Enter 1, 2 or 3 depending on which answer you think is correct.  
+
+        """)
+        quiz_answer= input() 
+        str(quiz_answer)
+        
+        if "1" in quiz_answer:
+            print("""\nA full stomach makes you full indeed, but not mindful!""")
+            input('<press enter to try againt>\n')
+            chances-=1
+
+
+        elif "2" in quiz_answer:
+            print("""\nBottomless brunch really? I'd say try again!""")
+            input('<press enter to try againt>\n')
+            chances-=1
+
+
+        elif "3" in quiz_answer:
+            print("""\n        
+        Did you know our sleep has 90min cycles and therefore it is best to either sleep 
+        exactly 7.5 or 9hrs.?! Continue to learn more!
+
+        _______________________________________________________________________________________
+                          """)
+
+
+            input('<Press any key to continue>\n')
+            round_2()
+
+        else:
+            print("Sorry, something went wrong! Please try again!")
+            chances-=1
+        
+    if chances == 0:
+        print('<you lost>')
+        fail()
+            
+   
+                                              
+#########################################################
+#Round 2
+#########################################################
+
+def round_2():
+    print("""
+ _______________________________________________________________________________________
+                  
+        Welcome to Round 2, this is a Word-Quiz! 
+        
+The Goal is to read the text below and fill the gaps guessing the right words in the right
+order, to make sense of the text about breathing techniques. 
+
+Read the text with the gaps first, and then have a look at the words prompted under 1-4. 
+
+Enter the words or Index numbers in the right order in the blanks. 
+
+***Sometimes, especially when trying to calm yourself in a 
+{Adjective} moment, it might help to start by taking an exaggerated *{Verb}*,
+a deep inhale through your {Noun} (3 seconds), hold your breath 
+{Time Period}, and a long exhale through your mouth (4 seconds).***
+
+1. two seconds 
+2. Nose
+3. Breath
+4. stressful 
+
+_______________________________________________________________________________________
+    
+""") 
+    input('<Press any key to continue>\n')
+    choose_word_1()
+
+
+def choose_word_1():
+#user input missing words 
+    word_1 = input ("\n Please input an Adjective: ")
+    if "stress" in word_1 or "4" in word_1:
+        print(" great, next one")
+        choose_word_2()
+    else:
+        print("Try again maybe with one of the other 3 options above.")
+        choose_word_1()
+
+def choose_word_2():
+    word_2 = input ("\n Please input a Noun: ")
+    if "Br" in word_2 or "3" in word_2 or "br" in word_2:
+        print(" great, only two more")
+        choose_word_3()
+    else:
+        print("Try again, maybe with one of the remaining 2 options above.")
+        choose_word_2()
+
+def choose_word_3():
+    word_3 = input ("\n Please input a Noun: ")
+    if "nos" in word_3 or "2" in word_3 or "Nos" in word_3:
+        print(" great, only one more")
+        choose_word_4()
+    else:
+        print("Try again, maybe the other option you haven't tried yet.")
+        choose_word_3()
+
+def choose_word_4():
+    word_4 = input ("\n Please input a Time Periods: ")
+    if "two" in word_4 or "1" in word_4:
+        print(" Well done, hit enter to read your text")
+        input ('<press enter to read your text>')
+        print(f"""
+        
+\n\n Read what you have written about how to use breathing as a technique for mindfulness:
+
+    'Sometimes, especially when trying to calm yourself in a stressful moment,
+     it might help to start by taking an exaggerated breath: a deep inhale 
+    through your nose (3 seconds), hold your breath (two seconds), and a long
+                        exhale through your mouth (4 seconds).'
+
+Don't forget to breathe daily with intention!
+""")
+        round_3_start()
+    
+    else:
+        print("Try again, which word did you not use yet?")
+        choose_word_4()
+    
+        
+def round_3_start():
+    print("""
+    I hope you are enjoying to learn about mindfulness and breathing. 
+    
+    Now take a deep breath before you jump into round 3!
+    
+    """)
+    input ('<press any key to continue>')
+    round_3_intro()
+    
+def round_3_intro():
+    print("""
+Laughing can be a mindful way of meditation. Generally having fun is lifting the mood and makes us 
+feel bettter. 
+
+So let's have some more fun in the last round!
+
+Hit enter to see some random statements about mindful practices such as yoga! You have to decide
+if they are true or false. 
+
+Yoga combines physical and mental practices of mindfulness hence it is a great
+way to become more mindful. But find out for yourself. 
+
+    """)
+    input ('<press any key to continue>')
+    round_3()
+
+def round_3():
+    
+    statement_list = ['Half Lord of the Fishes is a yoga pose', 
+                      'Balasana also called Child’s Pose is a yoga pose',
+                     'sleep deprivation will kill you more quickly than food deprivation',
+                     '36 million people in the US regularly practice yoga',]
+      
+    statement_list = random.choice(statement_list)
+    print(statement_list)
+    answer = input("\t Input true or false")
+             
+    if "true" in answer: 
+        print("""\n\n Correct you won already, but if you like to learn more press 'yes' to continue 
+        and 'no' in order to exit the game""")
+        confirm = input ("\n\t Input yes or no")
+        if "yes" in confirm:
+            start()   
+        elif "no" in confirm:
+            exit ()
+            
+    elif "false" in answer: 
+        print("try again.")
+        round_3()
+
+def fail():
+    start()      
+    
+start()
